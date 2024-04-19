@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcolatrice</title>       
+    .calculator {
+            
+            max-width: 150px;
+            margin: 0 auto;
+            padding: 5%;
+            border: 10px solid #e92626;
+            border-radius: 5px;
+        }
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0/css/bootstrap.min.css">
+    
+</head>
+<body bgcolor="black">
+    <header class="p-3 text-bg-dark">
+        <div class="text-center">
+          <img src="Ondadigitale.jfif" class="rounded mx-auto d-block" alt="Logo di ondaDigitale" width="125" height="125">
+        </div>
+        <div class="container">
+          <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+              <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
+            </a>
+    
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+              <li><a href="#" class="nav-link px-2 text-secondary">Home</a></li>
+              <li><a href="#" class="nav-link px-2 text-white">Meteo</a></li>
+              <li><a href="#" class="nav-link px-2 text-white">Chat Gpt</a></li>
+            </ul>
+    <div class="container">
+        <h2 style="color:rgb(255, 47, 0)">Calcolatrice</h2>
+
+        <div class="calculator">
+            <input type="text" id="display" class="form-control mb-3" readonly>
+            <div class="row">
+                <button class="btn btn-primary col" onclick="appendToDisplay('7')">7</button>
+                <button class="btn btn-primary col" onclick="appendToDisplay('8')">8</button>
+                <button class="btn btn-primary col" onclick="appendToDisplay('9')">9</button>
+                <button class="btn btn-secondary col" onclick="calculate('sin')">sin</button>
+            </div>
+            <div class="row">
+                <button class="btn btn-primary col" onclick="appendToDisplay('4')">4</button>
+                <button class="btn btn-primary col" onclick="appendToDisplay('5')">5</button>
+                <button class="btn btn-primary col" onclick="appendToDisplay('6')">6</button>
+                <button class="btn btn-secondary col" onclick="calculate('cos')">cos</button>
+
+            </div>
+            <div class="row">
+                <button class="btn btn-primary col" onclick="appendToDisplay('1')">1</button>
+                <button class="btn btn-primary col" onclick="appendToDisplay('2')">2</button>
+                <button class="btn btn-primary col" onclick="appendToDisplay('3')">3</button>
+                <button class="btn btn-secondary col" onclick="calculate('tan')">tan</button>
+
+            </div>
+            <div class="row">
+                <button class="btn btn-primary col" onclick="appendToDisplay('0')">0</button>
+                <button class="btn btn-primary col" onclick="appendToDisplay('.')">.</button>
+                <button class="btn btn-danger col" onclick="clearDisplay()">C</button>
+                <button class="btn btn-info col" onclick="appendToDisplay('(')">(</button>
+            </div>
+            <div class="row">
+                <button class="btn btn-success col" onclick="calculateEquation()">=</button>
+                <button class="btn btn-warning col" onclick="appendToDisplay('+')">+</button>
+                <button class="btn btn-warning col" onclick="appendToDisplay('-')">-</button>
+                
+                        <button class="btn btn-info col" onclick="appendToDisplay(')')">)</button>
+                <div>
+                        <button class="btn btn-warning col" onclick="appendToDisplay('*')">x</button>
+                        <button class="btn btn-warning col" onclick="appendToDisplay('/')">/</button></div>
+                        
+                
+                
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let display = document.getElementById('display');
+
+        function appendToDisplay(value) {
+            display.value += value;
+        }
+
+        function calculate(operation) {
+            const inputValue = parseFloat(display.value);
+            switch (operation) {
+                case 'sin':
+                    display.value = Math.sin(inputValue);
+                    break;
+                case 'cos':
+                    display.value = Math.cos(inputValue);
+                    break;
+                case 'tan':
+                    display.value = Math.tan(inputValue);
+                    break;
+            }
+        }
+
+        function calculateEquation() {
+            try {
+                display.value = eval(display.value);
+            } catch (error) {
+                display.value = 'Errore';
+            }
+        }
+
+        function clearDisplay() {
+            display.value = '';
+        }
+    </script>
+</body>
+</html>
